@@ -11,7 +11,7 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.set_page_config(page_title="Mon planning", layout="centered")
 
-st.title("📅 Mon activité")
+st.title("Mon Train")
 
 # ==============================
 # 📝 INPUT UTILISATEUR
@@ -31,7 +31,7 @@ planning = {
 # ==============================
 # 🔍 RECHERCHE
 # ==============================
-if st.button("Voir mon planning"):
+if st.button("Voir mon train et horaire"):
 
     if trigramme == "":
         st.warning("⚠️ Merci d'entrer un trigramme")
