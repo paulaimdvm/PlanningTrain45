@@ -31,7 +31,7 @@ planning = {
 # ==============================
 # 🔍 RECHERCHE
 # ==============================
-if st.button("Voir mon train et horaire"):
+if st.button("Voir mon train et mes horaires"):
 
     if trigramme == "":
         st.warning("⚠️ Merci d'entrer un trigramme")
