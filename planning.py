@@ -52,8 +52,7 @@ if st.button("Voir l'horaire de mon train"):
                 if activite in planning:
                     st.info(f"📅 {planning[activite]}")
                 else:
-                    st.warning("⚠️ Tu as rendez-vous avant au lieu pour aller vers la gare ⚠️ 
-                    Sois à l'heure (cf. message Whatsapp) ! ")
+                    st.warning("⚠️ Tu as rendez-vous avant au lieu pour aller vers la gare ⚠️. Sois à l'heure (cf. message Whatsapp) ! ")
 
             else:
                 st.error("❌ Aucun train trouvé pour ce trigramme")
