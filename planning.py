@@ -22,41 +22,41 @@ trigramme = st.text_input("Entre ton trigramme (ex: ABC)").upper().strip()
 # 🎯 PLANNING (à adapter librement)
 # ==============================
 planning = {
-    "A": "📍 Lundi 10h — Salle 1",
-    "B": "📍 Mardi 14h — Salle 2",
-    "C": "📍 Mercredi 9h — Salle 3",
-    "Parachutage": "🪂 Jeudi 15h — Base aérienne",
-}
+    "erreur": "📍 Lundi 10h — Salle 1",
+    "erreur": "📍 Mardi 14h — Salle 2",
+    "erreur": "📍 Mercredi 9h — Salle 3",
+    
 
 # ==============================
 # 🔍 RECHERCHE
 # ==============================
-if st.button("Voir mon train et mes horaires"):
+if st.button("Voir l'horaire de mon train"):
 
     if trigramme == "":
         st.warning("⚠️ Merci d'entrer un trigramme")
     else:
         try:
             # ✅ chercher l'inscription
-            res = supabase.table("inscriptions") \
+            res = supabase.table("train") \
                 .select("*") \
                 .ilike("trigramme", trigramme) \
                 .execute()
 
             # 🔍 RESULTAT
             if res.data:
-                activite = res.data[0]["activite"]
+                activite = res.data[0]["train"]
 
-                st.success(f"✅ Tu es inscrit à : {activite}")
+                st.success(f"✅ Ton train est à : {train}")
 
                 # ✅ afficher planning
                 if activite in planning:
                     st.info(f"📅 {planning[activite]}")
                 else:
-                    st.warning("⚠️ Planning non défini pour cette activité")
+                    st.warning("⚠️ Tu as rendez-vous avant au lieu pour aller vers la gare ⚠️ 
+                    Sois à l'heure (cf. message Whatsapp) ! ")
 
             else:
-                st.error("❌ Aucune inscription trouvée pour ce trigramme")
+                st.error("❌ Aucun train trouvé pour ce trigramme")
 
         except Exception as e:
             st.error(f"🔥 Erreur : {e}")
