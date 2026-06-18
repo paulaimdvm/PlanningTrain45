@@ -24,7 +24,7 @@ trigramme = st.text_input("Entre ton trigramme (ex: ABC)").upper().strip()
 planning = {
     "erreur": "📍 Lundi 10h — Salle 1",
     "erreur": "📍 Mardi 14h — Salle 2",
-    "erreur": "📍 Mercredi 9h — Salle 3",
+    "erreur": "📍 Mercredi 9h — Salle 3"}
     
 
 # ==============================
