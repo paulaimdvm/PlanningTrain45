@@ -16,16 +16,15 @@ st.title("Mon Train")
 # ==============================
 # 📝 INPUT UTILISATEUR
 # ==============================
-trigramme = st.text_input("Entre ton trigramme (ex: ABC)").upper().strip()
+trigramme = st.text_input("Entre ton trigramme (ex: ABC)").strip().upper()
 
 # ==============================
-# 🎯 PLANNING (à adapter librement)
+# 🎯 PLANNING
 # ==============================
 planning = {
-    "erreur": "📍 Lundi 10h — Salle 1",
-    "erreur": "📍 Mardi 14h — Salle 2",
-    "erreur": "📍 Mercredi 9h — Salle 3"}
-    
+    "00": "📍 Lundi 10h — Salle 1",
+    "0": "📍 Mercredi 9h — Salle 3"
+}
 
 # ==============================
 # 🔍 RECHERCHE
@@ -34,16 +33,17 @@ if st.button("Voir l'horaire de mon train"):
 
     if trigramme == "":
         st.warning("⚠️ Merci d'entrer un trigramme")
+
     else:
         try:
-            # ✅ chercher l'inscription
+            # ✅ recherche stricte (recommandé)
             res = supabase.table("train") \
                 .select("*") \
-                .ilike("trigramme", trigramme) \
+                .eq("trigramme", trigramme) \
                 .execute()
 
             # 🔍 RESULTAT
-            if res.data:
+            if res.data and len(res.data) > 0:
                 train_h = res.data[0]["train"]
 
                 st.success(f"✅ Ton train est à : {train_h}")
@@ -52,7 +52,7 @@ if st.button("Voir l'horaire de mon train"):
                 if train_h in planning:
                     st.info(f"📅 {planning[train_h]}")
                 else:
-                    st.warning("⚠️ Tu as rendez-vous avant au lieu pour aller vers la gare ⚠️. Sois à l'heure (cf. message Whatsapp) ! ")
+                    st.warning("⚠️ Rendez-vous avant départ (voir WhatsApp)")
 
             else:
                 st.error("❌ Aucun train trouvé pour ce trigramme")
