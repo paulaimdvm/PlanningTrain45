@@ -44,13 +44,13 @@ if st.button("Voir l'horaire de mon train"):
 
             # 🔍 RESULTAT
             if res.data:
-                train = res.data[0]["train"]
+                train_h = res.data[0]["train"]
 
-                st.success(f"✅ Ton train est à : {train}")
+                st.success(f"✅ Ton train est à : {train_h}")
 
                 # ✅ afficher planning
-                if train in planning:
-                    st.info(f"📅 {planning[train]}")
+                if train_h in planning:
+                    st.info(f"📅 {planning[train_h]}")
                 else:
                     st.warning("⚠️ Tu as rendez-vous avant au lieu pour aller vers la gare ⚠️. Sois à l'heure (cf. message Whatsapp) ! ")
 
