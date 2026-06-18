@@ -52,7 +52,7 @@ if st.button("Voir l'horaire de départ"):
                 if train_h in planning:
                     st.info(f"📅 {planning[train_h]}")
                 else:
-                    st.warning("⚠️ Sois bien à l'heure et pour plus d'infos cf WhatsApp ! ⚠️")
+                    st.warning("⚠️ Sois bien à l'heure ! ⚠️")
 
             else:
                 st.error("❌ Aucun train trouvé pour ce trigramme")
