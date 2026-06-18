@@ -38,13 +38,13 @@ if st.button("Voir l'horaire de mon train"):
         try:
             # ✅ recherche stricte (recommandé)
             res = supabase.table("train") \
-                .select("*") \
+                .select("train_h") \
                 .eq("trigramme", trigramme) \
                 .execute()
 
             # 🔍 RESULTAT
             if res.data and len(res.data) > 0:
-                train_h = res.data[0]["train"]
+                train_h = res.data[0]["train_h"]
 
                 st.success(f"✅ Ton train est à : {train_h}")
 
