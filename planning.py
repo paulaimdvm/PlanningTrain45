@@ -29,7 +29,7 @@ planning = {
 # ==============================
 # 🔍 RECHERCHE
 # ==============================
-if st.button("Voir l'horaire de mon train"):
+if st.button("Voir l'horaire de départ"):
 
     if trigramme == "":
         st.warning("⚠️ Merci d'entrer un trigramme")
@@ -46,13 +46,13 @@ if st.button("Voir l'horaire de mon train"):
             if res.data and len(res.data) > 0:
                 train_h = res.data[0]["train_h"]
 
-                st.success(f"✅ Ton train est à : {train_h}")
+                st.success(f"✅ RDV devant les bus avec tes bagages à : {train_h}")
 
                 # ✅ afficher planning
                 if train_h in planning:
                     st.info(f"📅 {planning[train_h]}")
                 else:
-                    st.warning("⚠️ Rendez-vous avant au lieu de départ (voir WhatsApp) ! ⚠️")
+                    st.warning("⚠️ Sois bien à l'heure et pour plus d'infos cf WhatsApp ! ⚠️")
 
             else:
                 st.error("❌ Aucun train trouvé pour ce trigramme")
