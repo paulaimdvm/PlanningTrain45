@@ -9,7 +9,7 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-st.set_page_config(page_title="Mon planning", layout="centered")
+st.set_page_config(page_title="Mon train", layout="centered")
 
 st.title("Mon Train")
 
